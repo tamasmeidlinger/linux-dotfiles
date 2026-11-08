@@ -1,0 +1,19 @@
+[global]
+background = "#1f1f1f"
+foreground = "#ffffff"
+frame_color = "#6f6f6f"
+
+font = CaskaydiaCove Nerd Font 12
+
+origin = top-right
+
+offset = "(8, 10)"
+
+[urgency_low]
+timeout = 2
+
+[urgency_normal]
+timeout = 6
+
+[urgency_critical]
+timeout = 0

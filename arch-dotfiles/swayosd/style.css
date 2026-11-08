@@ -1,0 +1,26 @@
+window {
+  border-radius: 0;
+  opacity: 0.97;
+  border: 2px solid #8f8f8f;
+
+  background-color: #1f1f1f;
+}
+
+label {
+  font-family: 'CaskaydiaClove Nerd Font';
+  font-size: 11pt;
+
+  color: white;
+}
+
+image {
+  color: white;
+}
+
+progressbar {
+  border-radius: 0;
+}
+
+progress {
+  background-color: white;
+}
