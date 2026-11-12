@@ -28,7 +28,7 @@ exec blueman-applet
 
 output DP-1 {
   mode 2560x1440@144Hz
-  scale 1.15
+  scale 1
 }
 
 input type:keyboard {
@@ -168,8 +168,8 @@ bindsym $mod+r mode "resize"
 
     # Special key to take a screenshot with grim
     # bindsym F8 exec grim
-    # bindsym F8 exec grim -g "$(slurp)" - | flatpak run org.satty.Satty --filename -
-    bindsym F8 exec grim -g "$(slurp)" - | wl-copy
+bindsym F8 exec 'grim -g "$(slurp)" - | ~/.local/bin/satty --filename -'
+    # bindsym F8 exec grim -g "$(slurp)" - | wl-copy
 
 ################
 # WINDOWS
@@ -187,4 +187,4 @@ gaps outer 5
 
 include ~/.config/sway/colortheme
 
-include @sysconfdir@/sway/config.d/*
+include /etc/sway/config.d/*
