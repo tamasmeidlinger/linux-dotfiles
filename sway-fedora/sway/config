@@ -22,6 +22,8 @@ exec waybar
 exec nm-applet --indicator
 exec blueman-applet
 
+exec_always swaybg -i ~/Pictures/Wallpapers/wallpaper1.png -m fill
+
 ##################
 # MONITOR & INPUT
 ##################
