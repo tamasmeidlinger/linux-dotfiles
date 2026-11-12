@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+case "${1:-}" in
+    mute) pactl set-sink-mute @DEFAULT_SINK@ toggle ;;
+    down|up)
+        volume_info=$(pactl get-sink-volume @DEFAULT_SINK@)
+        volume=$(sed -nE 's/.* ([0-9]+)%.*$/\1/p' <<<"$volume_info" | head -n1)
+        [[ "$volume" =~ ^[0-9]+$ ]] || exit 1
+        if [[ "$1" == down ]]; then
+            volume=$((volume - 5))
+        else
+            volume=$((volume + 5))
+        fi
+        (( volume < 0 )) && volume=0
+        (( volume > 100 )) && volume=100
+        pactl set-sink-volume @DEFAULT_SINK@ "${volume}%"
+        ;;
+    *)    exit 2 ;;
+esac
+
+volume_info=$(pactl get-sink-volume @DEFAULT_SINK@)
+volume=$(sed -nE 's/.* ([0-9]+)%.*$/\1/p' <<<"$volume_info" | head -n1)
+muted=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
+
+if [[ "$muted" == yes ]]; then
+    dunstify -a "Volume" -u low -r 9993 -h int:value:"${volume:-0}" -h string:x-dunst-stack-tag:volume "Volume muted" "${volume:-0}%"
+else
+    dunstify -a "Volume" -u low -r 9993 -h int:value:"${volume:-0}" -h string:x-dunst-stack-tag:volume "Volume" "${volume:-0}%"
+fi
