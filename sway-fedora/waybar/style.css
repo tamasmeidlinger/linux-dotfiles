@@ -26,8 +26,13 @@ button:hover {
 }
 
 .module:hover,
-tooltip {
+tooltip,
+tooltip.background,
+tooltip box,
+tooltip label {
+    background: #292c35;
     background-color: #292c35;
+    background-image: none;
     color: #e6e8ef;
 }
 
@@ -91,6 +96,16 @@ tooltip {
 
 #power-profiles-daemon {
     padding-right: 15px;
+}
+
+#custom-tray-toggle {
+    padding: 0 4px;
+    color: #e6e8ef;
+    font-size: 26px;
+}
+
+#tray {
+    padding-left: 0;
 }
 
 #battery.critical:not(.charging) {

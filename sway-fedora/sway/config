@@ -19,6 +19,8 @@ set $menu rofi -show drun
 ###############
 
 exec waybar
+exec nm-applet --indicator
+exec blueman-applet
 
 ##################
 # MONITOR & INPUT
@@ -34,7 +36,7 @@ input type:keyboard {
     repeat_rate 40
 }
 
-seat * hide_cursor 5000
+seat * hide_cursor when-typing enable
 
 ##################
 # KEYBINDINGS
@@ -165,7 +167,15 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
     # Special key to take a screenshot with grim
-    # bindsym Print exec grim
+    # bindsym F8 exec grim
+    bindsym F8 exec grim -g "$(slurp)" - | flatpak run org.satty.Satty --filename - --copy-command=wl-copy
+    # bindsym F8 exec grim -g "$(slurp)" - | wl-copy
+
+################
+# WINDOWS
+#################
+
+
 
 ################
 # STYLING
