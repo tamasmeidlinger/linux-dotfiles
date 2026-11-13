@@ -1,4 +1,4 @@
-set $primary            #cba6f7
+set $primary            #7aa9cd
 set $on_primary         #11111b
 set $secondary          #fab387
 set $tertiary           #94e2d5
@@ -16,3 +16,5 @@ client.unfocused        $outline  $surface  $on_surface_variant $outline   $outl
 client.urgent           $error    $surface  $on_surface         $error     $error
 client.placeholder      $surface  $surface  $on_surface_variant $surface   $surface
 client.background       $surface
+
+## set $primary            #cba6f7
