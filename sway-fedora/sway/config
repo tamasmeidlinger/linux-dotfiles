@@ -26,7 +26,7 @@ exec_always swaybg -i /usr/share/backgrounds/muci-ocsi-tamasm.png -m fill
 
 # Idle management
 exec swayidle -w \
-    timeout 300 'swaylock -f' \
+    timeout 100 'swaylock -f' \
     timeout 600 'swaymsg "output * power off"' \
     resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -f'
@@ -50,6 +50,15 @@ seat * hide_cursor when-typing enable
 ##################
 # KEYBINDINGS
 ##################
+
+# Package installer window
+for_window [app_id="pkg-installer"] floating enable, resize set 900 600, move position center
+bindsym $mod+Shift+i exec foot --app-id=pkg-installer ~/.local/bin/pkg-installer
+
+# Package uninstaller
+for_window [app_id="pkg-uninstaller"] floating enable, resize set 900 600, move position center
+bindsym $mod+Shift+u exec foot --app-id=pkg-uninstaller ~/.local/bin/pkg-uninstaller
+
 
 # Start a terminal
 bindsym $mod+Return exec $term
@@ -130,6 +139,9 @@ bindsym $mod+f fullscreen
 
 # Toggle the current focus between tiling and floating mode
 bindsym Shift+F5 floating toggle, sticky toggle
+bindsym Shift+F6 focus mode_toggle
+
+bindsym --whole-window $mod+button2 resize
 
 
 ########################

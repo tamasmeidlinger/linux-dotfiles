@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+selected=$(dnf -q repoquery --installed \
+  --qf '%{name}\n' |
+  sort -u |
+  fzf \
+    --multi \
+    --border \
+    --layout=default \
+    --prompt="Remove packages > ")
+
+if [[ -z "$selected" ]]; then
+  exit 0
+fi
+
+packages=()
+
+while IFS= read -r name; do
+  packages+=("$name")
+done <<< "$selected"
+
+echo ""
+echo "Selected packages for removal:"
+printf '  - %s\n' "${packages[@]}"
+echo ""
+
+read -r -p "Proceed with removal? [y/N] " confirm
+
+if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+  echo "Removal cancelled."
+  exit 0
+fi
+
+echo ""
+sudo dnf remove "${packages[@]}"
+
+echo ""
+echo "Removal finished."
+read -n 1 -s -r -p "Press any key to close..."

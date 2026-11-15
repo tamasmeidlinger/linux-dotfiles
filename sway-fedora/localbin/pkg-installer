@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+selected=$(dnf -q repoquery --available \
+  --qf '%{name}\n' |
+  sort -u |
+  fzf \
+    --multi \
+    --border \
+    --layout=default \
+    --prompt="Packages > ")
+
+if [[ -z "$selected" ]]; then
+  exit 0
+fi
+
+packages=()
+
+while IFS= read -r name; do
+  packages+=("$name")
+done <<<"$selected"
+
+echo ""
+echo "Selected packages:"
+printf '  - %s\n' "${packages[@]}"
+echo ""
+
+read -r -p "Proceed with installation? [y/N] " confirm
+
+if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+  echo "Installation cancelled."
+  exit 0
+fi
+
+# Install selected packages
+sudo dnf install "${packages[@]}"
+
+# Testing
+# printf '%s\n' "${packages[@]}"
+
+echo ""
+echo "Installation finished."
+read -n 1 -s -r -p "Press any key to close..."
