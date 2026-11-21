@@ -140,7 +140,8 @@ bindsym Shift+F7 focus left, focus left, layout toggle split, move left
 bindsym $mod+f fullscreen
 
 # Toggle the current focus between tiling and floating mode
-bindsym Shift+F5 floating toggle, sticky toggle, resize set width 950 height 600, move position 63ppt 0
+# bindsym Shift+F5 floating toggle, sticky toggle, resize set width 950 height 600, move position 63ppt 0
+bindsym Shift+F5 floating toggle, resize set width 60ppt height 80ppt
 bindsym Shift+F6 focus mode_toggle
 
 bindsym --whole-window $mod+button2 resize
