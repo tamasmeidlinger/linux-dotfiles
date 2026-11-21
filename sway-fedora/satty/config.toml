@@ -1,0 +1,6 @@
+[general]
+fullscreen = false
+floating-hack = true
+resize = { mode = "smart" }
+# early-exit = ["copy"]
+copy-command = "wl-copy"
