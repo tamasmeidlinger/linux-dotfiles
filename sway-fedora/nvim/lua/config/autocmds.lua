@@ -37,3 +37,10 @@ signal:start(vim.uv.constants.SIGUSR1, function()
     vim.notify("Theme refreshed")
   end)
 end)
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.spell = false
+  end,
+})

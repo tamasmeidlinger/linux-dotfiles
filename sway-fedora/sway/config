@@ -12,7 +12,9 @@ set $right l
 # Terminal
 set $term foot
 # Your preferred application launcher
-set $menu rofi -show drun
+# set $menu rofi -show drun
+# set $menu rofi -x11 -show drun
+set $menu wofi --show drun
 
 ###############
 # START
@@ -138,7 +140,7 @@ bindsym Shift+F7 focus left, focus left, layout toggle split, move left
 bindsym $mod+f fullscreen
 
 # Toggle the current focus between tiling and floating mode
-bindsym Shift+F5 floating toggle, sticky toggle
+bindsym Shift+F5 floating toggle, sticky toggle, resize set width 950 height 600, move position 63ppt 0
 bindsym Shift+F6 focus mode_toggle
 
 bindsym --whole-window $mod+button2 resize
