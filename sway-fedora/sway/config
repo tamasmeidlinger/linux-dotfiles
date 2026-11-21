@@ -14,7 +14,7 @@ set $term foot
 # Your preferred application launcher
 # set $menu rofi -show drun
 # set $menu rofi -x11 -show drun
-set $menu wofi --show drun
+set $menu wofi --show drun --matching contains --insensitive
 
 ###############
 # START
