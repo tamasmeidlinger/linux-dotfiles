@@ -11,6 +11,22 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 
 # ==============================
+# EXPORTS
+# ==============================
+
+export PATH="$HOME/.local/bin:$PATH"
+# GTK
+export GDK_BACKEND=wayland,x11
+export GDK_SCALE=2          # Integer scaling only (1, 2)
+export GDK_DPI_SCALE=0.75 
+# Qt
+# export QT_QPA_PLATFORM=wayland
+# export QT_AUTO_SCREEN_SCALE_FACTOR=1
+# Electron
+# export ELECTRON_OZONE_PLATFORM_HINT=auto
+
+
+# ==============================
 # FZF
 # ==============================
 
@@ -72,9 +88,9 @@ source $ZSH/oh-my-zsh.sh
 # =====================================
 
 alias fzf="fzf -m"
-alias ls="eza -1 --icons=always --oneline"
-alias lsd="eza -lh1 --icons always"
-alias lst="eza --icons never -T -L"
+# alias ls="eza -1 --icons=always --oneline"
+# alias lsd="eza -lh1 --icons always"
+# alias lst="eza --icons never -T -L"
 alias v="nvim"
 alias lg="lazygit"
 
